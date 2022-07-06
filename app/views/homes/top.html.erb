@@ -1,8 +1,13 @@
 <h1>トップページ</h1>
 
+    <% if user_signed_in? %>
+      <li>
+        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+      </li>
+    <% end %>
 
 <% @posts.each do |post| %>
-  <%= post.nickname %>
+  <%= post.user.nickname %>
   <%= post.sauna %>
   <%= post.text %>
 <% end %>
