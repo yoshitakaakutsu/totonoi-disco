@@ -1,12 +1,6 @@
 <%= render '/header' %>
 
-<h1>トップページ</h1>
-
-    <% if user_signed_in? %>
-      <li>
-        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-      </li>
-    <% end %>
+<h1>投稿一覧</h1>
 
 <% @posts.each do |post| %>
   <%= post.user.nickname %>
@@ -14,4 +8,6 @@
     <%= post.sauna %>
   <% end %>
   <%= post.text %>
+  <%= link_to "#{post.comments.count} コメント", public_post_path(post.id) %>
+  <%= link_to "#{post.goods.count} いいね", public_post_path(post.id) %>
 <% end %>
