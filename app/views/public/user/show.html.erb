@@ -1,0 +1,17 @@
+<%= render '/header' %>
+
+<div>
+  <h3><%= @user.nickname %></h3>
+  <%= image_tag @user.get_profile_image(100,100) %>
+</div>
+
+
+
+<% @post.each do |post| %>
+<div>
+  <%= link_to public_post_path(post.id) do %>
+    <%= post.sauna %>
+  <% end %>
+  <%= post.text %>
+</div>
+<% end %>

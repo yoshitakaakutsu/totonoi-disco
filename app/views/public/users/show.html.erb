@@ -1,0 +1,26 @@
+<%= render '/header' %>
+
+<div>
+  <h3><%= @user.nickname %></h3>
+  <%= image_tag @user.get_profile_image(100,100) %>
+</div>
+
+<div>
+  <% if @user == current_user %>
+    <%= @user.last_name %><%= @user.first_name %></br>
+    <%= @user.last_name_kana %><%= @user.first_name_kana %></br>
+    <%= @user.email %></br>
+    <%= link_to "プロフィール編集", edit_public_user_path(@user) %>
+  <% end %>
+</div>
+
+
+
+<% @post.each do |post| %>
+<div>
+  <%= link_to public_post_path(post.id) do %>
+    <%= post.sauna %>
+  <% end %>
+  <%= post.text %>
+</div>
+<% end %>
