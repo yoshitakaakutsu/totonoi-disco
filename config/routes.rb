@@ -15,7 +15,10 @@ Rails.application.routes.draw do
   get "/about" => "homes#about", as: "about"
   
   get '/post' => "public/posts#index", as: "post_index"
-  #get '/post/:id' => "public/posts#show", as: "post_show"
-  get '/post/new' => "public/posts#new", as: "post_new"
-  post '/post/new' => "public/posts#create", as: "post_create"
+  get '/post/:id' => "public/posts#show", as: "post_show"
+  get '/posts/new' => "public/posts#new", as: "post_new"
+  post '/posts/new' => "public/posts#create", as: "post_create"
+  delete '/post/:id' => "public/posts#destroy", as: "post_destroy"
+  
+  post '/post/:post_id/comments' => "public/comment#create", as: "post_comment"
 end

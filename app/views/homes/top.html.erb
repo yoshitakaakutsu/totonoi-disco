@@ -8,6 +8,8 @@
 
 <% @posts.each do |post| %>
   <%= post.user.nickname %>
-  <%= post.sauna %>
+  <%= link_to post_show_path(post.id) do %>
+    <%= post.sauna %>
+  <% end %>
   <%= post.text %>
 <% end %>
