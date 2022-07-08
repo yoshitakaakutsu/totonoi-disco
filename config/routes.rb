@@ -22,5 +22,7 @@ Rails.application.routes.draw do
     end
     
     resources :users, only: [:show, :edit, :update]
+    
+    resources :records, only: [:index, :create, :show, :new, :edit]
 end
 end

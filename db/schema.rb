@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_07_142844) do
+ActiveRecord::Schema.define(version: 2022_07_08_025946) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -73,6 +73,24 @@ ActiveRecord::Schema.define(version: 2022_07_07_142844) do
     t.string "sauna"
     t.text "text"
     t.integer "user_id"
+  end
+
+  create_table "records", force: :cascade do |t|
+    t.integer "customer_id"
+    t.integer "sauna_name"
+    t.integer "sauna_tempureture"
+    t.integer "water_tempurature"
+    t.integer "tempreture"
+    t.string "wether"
+    t.integer "sets"
+    t.integer "sauna_time"
+    t.integer "water_time"
+    t.integer "totonoi_time"
+    t.string "sauna_type"
+    t.string "rouryu"
+    t.integer "totonoi_ratio"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|

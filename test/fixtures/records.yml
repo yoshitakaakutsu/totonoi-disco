@@ -1,0 +1,31 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  customer_id: 1
+  sauna_name: 1
+  sauna_tempureture: 1
+  water_tempurature: 1
+  tempreture: 1
+  wether: MyString
+  sets: 1
+  sauna_time: 1
+  water_time: 1
+  totonoi_time: 1
+  sauna_type: MyString
+  rouryu: MyString
+  totonoi_ratio: 1
+
+two:
+  customer_id: 1
+  sauna_name: 1
+  sauna_tempureture: 1
+  water_tempurature: 1
+  tempreture: 1
+  wether: MyString
+  sets: 1
+  sauna_time: 1
+  water_time: 1
+  totonoi_time: 1
+  sauna_type: MyString
+  rouryu: MyString
+  totonoi_ratio: 1
