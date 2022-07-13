@@ -1,4 +1,47 @@
 <%= render '/header' %>
 
 <h1>サ活記録</h1>
-
+  <% @records.each do |record| %>
+      <tr>
+        <td>
+          <%= record.sauna_name%>
+        </td>
+        <td>
+          <%= record.sauna_tempureture%>
+        </td>
+        <td>
+          <%= record.water_tempurature%>
+        </td>
+        <td>
+          <%= record.tempreture%>
+        </td>
+        <td>
+          <%= record.wether%>
+        </td>
+        <td>
+          <%= record.sets%>
+        </td>
+        <td>
+          <%= record.sauna_time%>
+        </td>
+        <td>
+          <%= record.water_time%>
+        </td>
+        <td>
+          <%= record.totonoi_time%>
+        </td>
+        <td>
+          <%= record.rouryu%>
+        </td>
+        <td>
+          <%= record.totonoi_ratio%>
+        </td>
+        <td>
+          <%= link_to "編集する", edit_public_record_path(record.id) %>
+        </td>
+        <td>
+           <%= link_to "削除する", public_record_path(record.id), method: :delete %>
+        </td>
+      </tr>
+      
+  <% end %>

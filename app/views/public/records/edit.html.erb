@@ -1,9 +1,9 @@
 <%= render '/header' %>
 
-<h1>サ活登録</h1>
+<h1>サ活編集</h1>
 
-  <%= form_with model: @record, url: public_records_path, method: :post do |f| %>
-    <h4>サウナ名</h4>
+<%= form_with model: @record, url: public_record_path, method: :patch do |f| %>
+  <h4>サウナ名</h4>
       <%= f.text_field :sauna_name %></br>
     <h4>サウナ温度</h4>
       <%= f.text_field :sauna_tempureture %>℃</br>
@@ -26,5 +26,5 @@
       <%= f.text_field :rouryu %></br>
     <h4>ととのい度<h4>
       <%= f.text_field :totonoi_ratio %>%</br>
-    <%= f.submit '登録する' %>
-  <% end %>
+    <%= f.submit '変更内容を保存' %>
+<% end %>

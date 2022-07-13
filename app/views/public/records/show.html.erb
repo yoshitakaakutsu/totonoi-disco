@@ -1,4 +1,28 @@
 <%= render '/header' %>
 
 <h1>サ活詳細</h1>
-  <%= @record.date %>
+
+  
+  <h4>サウナ名</h4>
+      <%= @record.sauna_name %></br>
+    <h4>サウナ温度</h4>
+      <%= @record.sauna_tempureture %>℃</br>
+    <h4>水風呂温度</h4>
+      <%= @record.water_tempurature %>℃</br>
+    <h4>外気（内気）温度</h4>
+      <%= @record.tempreture %>℃</br>
+    <h4>天気</h4>
+      <%= @record.wether %>℃</br>
+    <h4>セット数</h4>
+      <%= @record.sets %>回</br>
+    <h4>内訳</h4>
+      <p>サウナ</p>
+        <%= @record.sauna_time %>分</br>
+      <p>水風呂</p>
+        <%= @record.water_time %>分</br>
+      <p>休憩</p>
+        <%= @record.totonoi_time %>分</br>
+    <h4>ロウリュ</h4>
+      <%= @record.rouryu %></br>
+    <h4>ととのい度<h4>
+      <%= @record.totonoi_ratio %>%</br>

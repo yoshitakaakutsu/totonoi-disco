@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_08_025946) do
+ActiveRecord::Schema.define(version: 2022_07_13_114800) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -77,7 +77,6 @@ ActiveRecord::Schema.define(version: 2022_07_08_025946) do
 
   create_table "records", force: :cascade do |t|
     t.integer "customer_id"
-    t.integer "sauna_name"
     t.integer "sauna_tempureture"
     t.integer "water_tempurature"
     t.integer "tempreture"
@@ -91,6 +90,8 @@ ActiveRecord::Schema.define(version: 2022_07_08_025946) do
     t.integer "totonoi_ratio"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
+    t.string "sauna_name"
   end
 
   create_table "users", force: :cascade do |t|
