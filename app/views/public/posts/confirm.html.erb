@@ -1,0 +1,9 @@
+<%= render '/header' %>
+
+<h1>下書き</h1>
+
+  <% @posts.each do |post| %>
+    <%= post.sauna %>
+    <%= post.text%>
+    <%= link_to "投稿する", public_post_toggle_status_path(post),method: :patch %>
+  <% end %>

@@ -19,11 +19,17 @@ Rails.application.routes.draw do
       resource :goods, only: [:create, :destroy]
       
       resources :comments, only: [:create, :destroy]
+      
+      collection do
+        get 'confirm'
+      end
+      
+      patch :toggle_status 
     end
     
     resources :users, only: [:show, :edit, :update]
     get "users/:id/good" => "users#good", as: "user_good"
     
     resources :records, only: [:index, :create, :show, :new, :edit, :update, :destroy]
-end
+  end
 end

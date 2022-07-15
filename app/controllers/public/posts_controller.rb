@@ -1,6 +1,6 @@
 class Public::PostsController < ApplicationController
   def index
-    @posts = Post.all
+    @posts = Post.where(status: :published)
   end
   
   def new
@@ -25,9 +25,17 @@ class Public::PostsController < ApplicationController
     redirect_to root_path
   end
   
+  def confirm
+    @posts = current_user.posts.where(status: :draft)
+  end
+  
+  def toggle_status
+ 
+  end
+  
   private
   
   def post_params
-    params.require(:post).permit(:sauna,:text)
+    params.require(:post).permit(:sauna,:text, :status)
   end
 end

@@ -6,4 +6,7 @@ class Post < ApplicationRecord
   def favorited_by?(user)
     goods.exists?(user_id: user.id)
   end
+  
+  enum status: {published: 0, draft: 1}
+  
 end
