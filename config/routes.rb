@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     end
     
     resources :users, only: [:show, :edit, :update]
+    get "users/:id/good" => "users#good", as: "user_good"
     
     resources :records, only: [:index, :create, :show, :new, :edit, :update, :destroy]
 end

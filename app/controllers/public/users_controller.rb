@@ -14,6 +14,12 @@ class Public::UsersController < ApplicationController
     redirect_to public_user_path
   end
   
+  def good
+    @user = User.find(params[:id])
+    goods = Good.where(user_id: @user.id).pluck(:post_id)
+    @good_posts = Post.find(goods)
+  end
+  
   private
   
   def user_params

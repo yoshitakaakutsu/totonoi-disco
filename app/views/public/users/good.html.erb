@@ -1,0 +1,13 @@
+<%= render '/header' %>
+
+<h1>いいね一覧</h1>
+
+  <% @good_posts.each do |post| %>
+    <%= post.user.nickname %>
+    <%= link_to public_post_path(post.id) do %>
+      <%= post.sauna %>
+    <% end %>
+    <%= post.text %>
+    <%= link_to "#{post.comments.count} コメント", public_post_path(post.id) %>
+    <%= "#{post.goods.count} いいね" %>
+  <% end %>
