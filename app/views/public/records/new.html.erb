@@ -5,6 +5,7 @@
   <%= form_with model: @record, url: public_records_path, method: :post do |f| %>
     <h4>サウナ名</h4>
       <%= f.text_field :sauna_name %></br>
+    　<%= f.datetime_field :day %></br>
     <h4>サウナ温度</h4>
       <%= f.text_field :sauna_tempureture %>℃</br>
     <h4>水風呂温度</h4>

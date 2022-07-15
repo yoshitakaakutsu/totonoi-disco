@@ -1,7 +1,7 @@
 class Public::RecordsController < ApplicationController
   def index
-    @record = Record.new
-    @records = current_user.records
+    @records = current_user.records.all
+    #@month_record = @records.group("CONCAT(YEAR(day),MANTH(day))").count
   end
   
   def show
@@ -40,6 +40,6 @@ class Public::RecordsController < ApplicationController
   private
   
   def record_params
-    params.require(:record).permit(:sauna_name,:sauna_tempureture,:water_tempurature,:tempreture,:wether,:sets,:sauna_time,:water_time,:totonoi_time,:sauna_type,:rouryu,:totonoi_ratio, :user_id)
+    params.permit(:sauna_name,:sauna_tempureture,:water_tempurature,:tempreture,:wether,:sets,:sauna_time,:water_time,:totonoi_time,:sauna_type,:rouryu,:totonoi_ratio, :user_id, :day)
   end
 end

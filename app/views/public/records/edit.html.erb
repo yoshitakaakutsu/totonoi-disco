@@ -3,6 +3,8 @@
 <h1>サ活編集</h1>
 
 <%= form_with model: @record, url: public_record_path, method: :patch do |f| %>
+　<h4>日付</h4>
+　　　<%= f.date_field :day %></br>
   <h4>サウナ名</h4>
       <%= f.text_field :sauna_name %></br>
     <h4>サウナ温度</h4>
