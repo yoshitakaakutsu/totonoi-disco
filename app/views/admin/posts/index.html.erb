@@ -1,0 +1,15 @@
+<%= render '/header' %>
+
+<h1>投稿一覧</h1>
+
+<% @posts.each do |post| %>
+  <%= post.user.nickname %>
+  <%= link_to admin_post_path(post.id) do %>
+    <%= post.sauna %>
+  <% end %>
+  <%= post.text %>
+  <%= link_to "#{post.comments.count} コメント", public_post_path(post.id) %>
+  <%= link_to "#{post.goods.count} いいね", public_post_path(post.id) %>
+  <%= link_to "削除", admin_post_path(post), method: :delete %>
+<% end %>
+

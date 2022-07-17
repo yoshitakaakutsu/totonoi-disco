@@ -27,9 +27,22 @@ Rails.application.routes.draw do
       patch :toggle_status 
     end
     
-    resources :users, only: [:show, :edit, :update]
-    get "users/:id/good" => "users#good", as: "user_good"
+    resources :users, only: [:show, :edit, :update] do
+      resources :notifications, only: :index
+      
+      collection do
+        get 'good'
+      end
+    end
     
     resources :records, only: [:index, :create, :show, :new, :edit, :update, :destroy]
+  end
+  
+  namespace :admin do
+    resources :users, only: [:index, :show, :edit, :update]
+    
+    resources :posts, only: [:index, :show, :destroy]
+    
+    resources :comment, only: [:destroy]
   end
 end

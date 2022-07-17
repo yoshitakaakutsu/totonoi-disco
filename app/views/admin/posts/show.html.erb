@@ -1,0 +1,34 @@
+<%= render '/header' %>
+
+<p1>投稿詳細</p1>
+
+<div>
+  <p>ユーザーネーム：<%= @post.user.nickname %></p>
+  <p>サウナ名：<%= @post.sauna %></p>
+  <p>説明：<%= @post.text %></p>
+  <p>投稿日：<%= @post.created_at.strftime('%Y/%m/%d') %></p>
+  
+  <% if @post.user == current_user %>
+    <%= link_to "削除", public_post_path(@post), method: :delete %>
+  <% end %>
+  <% if @post.favorited_by?(current_user) %>
+    <p>
+      <%= link_to public_post_goods_path(@post), method: :delete do %>
+        ♥<%= @post.goods.count %> いいね
+      <% end %>
+    </p>
+    <% else %>
+    <p>
+      ♡<%= @post.goods.count %> いいね
+    </p>
+  <% end %>
+</div>
+
+<div>
+  <p>コメント件数：<%= @post.comments.count %></p>
+  <% @post.comments.each do |comment| %>
+    <%= comment.user.nickname %>
+    <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %>
+    <%= link_to "削除", admin_comment_path(comment.post, comment), method: :delete %>
+  <% end %>
+</div>
