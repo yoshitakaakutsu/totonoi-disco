@@ -29,6 +29,6 @@
   <% @post.comments.each do |comment| %>
     <%= comment.user.nickname %>
     <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %>
-    <%= link_to "削除", admin_comment_path(comment.post, comment), method: :delete %>
+    <%= link_to "削除", admin_comment_path(comment), method: :delete %>
   <% end %>
 </div>

@@ -32,6 +32,7 @@ Rails.application.routes.draw do
       
       collection do
         get 'good'
+        patch 'withdraw'
       end
     end
     
@@ -43,6 +44,6 @@ Rails.application.routes.draw do
     
     resources :posts, only: [:index, :show, :destroy]
     
-    resources :comment, only: [:destroy]
+    resources :comments, only: [:destroy]
   end
 end
