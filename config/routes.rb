@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   sessions: 'public/sessions'
   }
   
-  devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
+  devise_for :admin, skip: [:passwords] ,controllers: {
+  registrations: "admin/registrations",
   sessions: "admin/sessions"
   }
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
@@ -31,8 +32,10 @@ Rails.application.routes.draw do
       resources :notifications, only: :index
       
       collection do
-        get 'good'
         patch 'withdraw'
+      end
+      member do
+        get 'good'
       end
     end
     
