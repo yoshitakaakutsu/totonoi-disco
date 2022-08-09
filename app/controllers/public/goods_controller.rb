@@ -4,6 +4,7 @@ class Public::GoodsController < ApplicationController
     post = Post.find(params[:post_id])
     good = current_user.goods.new(post_id: post.id)
     good.save
+    post.create_notification_like!(current_user)
     redirect_to public_post_path(post)
   end
 

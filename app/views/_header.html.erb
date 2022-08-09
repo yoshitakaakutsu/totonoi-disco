@@ -1,18 +1,13 @@
 <header>
   <nav class="navbar navbar-expand-lg navbar-dark border">
-    <div class="container">
+    <div class="container-fluid">
       <p>LOGO</p>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-
-
-      <% if user_signed_in? %>
-        <p class="offset-md-3">ようこそ<%= current_user.nickname %>さん！</p>
-      <% end %>
-
-      <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav ml-auto">
+      
+       <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
         <% if user_signed_in? %>
           <li class="nav-item"><%= link_to "マイページ", public_user_path(current_user.id), class: "btn btn-default shadow-sm" %></li>
           <li class="nav-item"><%= link_to "投稿一覧", public_posts_path, class: "btn btn-default shadow-sm" %></li>
@@ -24,12 +19,25 @@
           <li class="nav-item"><%= link_to "投稿一覧", admin_posts_path, class: "btn btn-default shadow-sm" %></li>
           <li class="nav-item"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete,class: "btn btn-default shadow-sm" %></li>
         <% else %>
-          <li class="nav-item"><%= link_to "About", about_path, class: "btn btn-default shadow-sm" %></li>
+          <li class="nav-item"><%= link_to "ととのいLabとは？", about_path, class: "btn btn-default shadow-sm" %></li>
           <li class="nav-item"><%= link_to "新規登録", new_user_registration_path, class: "btn btn-default shadow-sm" %></li>
           <li class="nav-item"><%= link_to "ログイン", new_user_session_path, class: "btn btn-default shadow-sm" %></li>
         <% end %>
         </ul>
       </div>
-      </div>
-    </nav>
+
+
+      <% if user_signed_in? %>
+        <p class="offset-md-3">ようこそ<%= current_user.nickname %>さん！</p>
+      <% end %>
+      
+    <%= form_with url: search_public_posts_path, local: true, method: :get do |form| %>
+      <%= form.text_field :keyword %>
+      <%= form.submit "検索" %>
+    <% end %>
+
+
+     
+    </div>
+  </nav>
 </header>

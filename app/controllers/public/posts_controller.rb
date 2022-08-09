@@ -30,8 +30,18 @@ class Public::PostsController < ApplicationController
   end
   
   def toggle_status
- 
+    
   end
+  
+  def search
+    if params[:keyword].present?
+      @post = Post.where('text LIKE ?', "%#{params[:keyword]}%")
+      @keyword = params[:keyword]
+    else
+      @post = Post.all
+    end
+  end
+
   
   private
   

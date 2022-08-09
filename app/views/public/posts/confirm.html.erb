@@ -6,4 +6,5 @@
     <%= post.sauna %>
     <%= post.text%>
     <%= link_to "投稿する", public_post_toggle_status_path(post),method: :patch %>
+    <%= link_to "削除", public_post_path(@posts), method: :delete %>
   <% end %>

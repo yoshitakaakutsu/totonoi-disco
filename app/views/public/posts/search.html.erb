@@ -1,0 +1,12 @@
+<%= render '/header' %>
+
+<h2>検索結果 "<%= @keyword %>"</h2>
+    <% @post.each do |post| %>
+      <%= post.user.nickname %>
+      <%= link_to public_post_path(post.id) do %>
+        <%= post.text %>
+      <% end %>
+      <%= post.text %>
+      <%= link_to "#{post.comments.count} コメント", public_post_path(post.id) %>
+      <%= link_to "#{post.goods.count} いいね", public_post_path(post.id) %>
+    <% end %>

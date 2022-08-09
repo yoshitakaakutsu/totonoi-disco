@@ -9,5 +9,5 @@
     <%= f.select :status, [["公開", "published"], ["下書き", "draft"]],required: true,class:"form-control" %>
     <%= f.submit '投稿' %>
   <% end %>
-  <h4><%= link_to "下書き",confirm_public_posts_path %> </h4>
+  <h4><%= link_to "下書き",confirm_public_post_path(current_user) %> </h4>
   
