@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   get "/about" => "homes#about", as: "about"
   
   namespace :public do
-    resources :posts, only: [:new, :create, :index, :show, :destroy] do
+    resources :posts, only: [:new, :create, :index, :show, :destroy, :edit, :update] do
       resource :goods, only: [:create, :destroy]
       
       resources :comments, only: [:create, :destroy]
@@ -29,7 +29,6 @@ Rails.application.routes.draw do
         get 'confirm'
       end
       
-      patch :toggle_status 
     end
     
     resources :users, only: [:show, :edit, :update] do

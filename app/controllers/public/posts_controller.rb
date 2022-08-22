@@ -1,6 +1,6 @@
 class Public::PostsController < ApplicationController
   def index
-    @posts = Post.where(status: :published)
+      @posts= Post.all.order(id: "DESC").where(status: :published)
   end
   
   def new
@@ -29,9 +29,16 @@ class Public::PostsController < ApplicationController
     @posts = current_user.posts.where(status: :draft)
   end
   
-  def toggle_status
-    
+  def edit
+    @posts = Post.find(params[:id])
+  end  
+  
+  def update
+    @posts = Post.find(params[:id])
+    @posts.update(post_params)
+    redirect_to public_posts_path
   end
+  
   
   def search
     if params[:keyword].present?

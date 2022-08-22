@@ -3,7 +3,6 @@
 <h1>サ活記録</h1>
   <%= month_calendar records: @records do |date, records| %>
     <%= date.day %>
-    
     <% records.each do |record| %>
       <div>
         <%= record.sauna_name %>
@@ -60,3 +59,6 @@
   <% end %>
   
   <%= link_to "記録する", new_public_record_path %>
+
+
+  

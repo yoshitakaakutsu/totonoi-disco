@@ -2,8 +2,9 @@
 
 <div class="container">
 
-<h1>投稿画面</h1>
-  <%= form_with model: @post, url: public_posts_path, method: :post do |f| %>
+<h1>編集する</h1>
+
+ <%= form_with model: @posts, url: public_post_path(@posts), method: :patch do |f| %>
 　　<div class="field">
       <%= f.label :サウナ名, class: "col-3 col-form-label" %>
       <%= f.text_field :sauna %>
@@ -15,8 +16,5 @@
     <%= f.select :status, [["公開", "published"], ["下書き", "draft"]],required: true,class:"form-control" %>
     <%= f.submit '投稿' %>
   <% end %>
-  <%= link_to "下書き",confirm_public_post_path(current_user) %>
   
-  
-</div>
-  
+  </div>
