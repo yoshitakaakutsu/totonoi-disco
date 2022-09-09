@@ -26,3 +26,8 @@
       <%= @record.rouryu %></br>
     <h4>ととのい度<h4>
       <%= @record.totonoi_ratio %>%</br>
+      
+
+          <%= link_to "編集する", edit_public_record_path(@record.id) %>
+
+           <%= link_to "削除する", public_record_path(@record.id), method: :delete %>

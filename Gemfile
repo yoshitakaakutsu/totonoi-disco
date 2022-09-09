@@ -61,3 +61,4 @@ gem 'simple_calendar', '~> 2.0'
 
 gem 'enum_help'
 
+gem 'kaminari','~> 1.2.1'

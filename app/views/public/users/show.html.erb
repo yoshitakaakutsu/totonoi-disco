@@ -32,6 +32,8 @@
         <%= link_to "プロフィール編集", edit_public_user_path(@user) %> | <%= link_to "いいね一覧", good_public_user_path(current_user.id) %>
       </p>
     </div>
+    
+    
 
 
 
@@ -64,6 +66,7 @@
           </div>
         </div>
         <% end %>
+        <%= paginate @post %>
       </div>
     </div>
     

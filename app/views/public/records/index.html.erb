@@ -3,20 +3,24 @@
 <h1>サ活記録</h1>
   <%= month_calendar records: @records do |date, records| %>
     <%= date.day %>
+    
     <% records.each do |record| %>
       <div>
         <%= record.sauna_name %>
+        <%= record.totonoi_ratio %>
       </div>
     <% end %>
   <% end %>
   
+  
+  
   <% @records.each do |record| %>
       <tr>
         <td>
-          <%= record.day %>
+          <%= record.day.strftime("%Y-%m-%d")  %>
         </td>
         <td>
-          <%= record.sauna_name%>
+          <%= link_to record.sauna_name, public_record_path(record.id) %>
         </td>
         <td>
           <%= record.sauna_tempureture%>
@@ -59,6 +63,8 @@
   <% end %>
   
   <%= link_to "記録する", new_public_record_path %>
+  
+ 
 
 
   

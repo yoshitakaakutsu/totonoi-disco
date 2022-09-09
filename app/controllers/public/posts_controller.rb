@@ -1,6 +1,6 @@
 class Public::PostsController < ApplicationController
   def index
-      @posts= Post.all.order(id: "DESC").where(status: :published)
+      @posts= Post.page(params[:page]).per(5).order(id: "DESC").where(status: :published)
   end
   
   def new

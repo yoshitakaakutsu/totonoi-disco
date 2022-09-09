@@ -1,7 +1,7 @@
 class Public::RecordsController < ApplicationController
   def index
     @records = current_user.records.all
-    @month_record = @records.group("MANTH(day))")
+    @month_record =@records.group("MONTH(day)")
   end
   
   def show
