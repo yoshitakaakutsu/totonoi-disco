@@ -16,10 +16,14 @@
  */
 
  
-
-.jumbotron {
-  background-image: image-url('sauna.jpg');
+.background {
+  width: 100%;
+  height: 50vh;
+  background-image: url(./sauna.jpeg);
+  background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
+  
 }
 
 .pagination>li>a {          
@@ -38,4 +42,9 @@
 
 .pagination {
   justify-content: center;
+}
+
+.icon {
+  width: 60px;
+  height: 60px;
 }

@@ -1,12 +1,17 @@
 <%= render '/header' %>
 
-<div class="container">
+
   
-  <div class="background"> 
+  <div class="background">
+    <%= image_tag("logo.jpg", class:"d-block mx-auto p-5",  style:"height:300px; width:300px;") %>
+    <h1 class="d-flex align-items-center justify-content-center text-light">ととのいLABへようこそ！</h1>
+    
   </div>
   
-    <h2>みんなのサ活</h2>
-    <h5 class="ml-3">サウナに行った記録をみんなで共有しよう！</h5>
+  <div class="container">
+  
+    <h2 class="font-weight-bold">みんなのサ活</h2>
+    <p class="ml-3 lead">サウナに行った記録をみんなで共有しよう！</p>
 
   <div class="card-list-container py-5">
     <% @posts.each do |post| %>
