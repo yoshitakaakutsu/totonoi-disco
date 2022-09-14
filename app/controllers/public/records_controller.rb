@@ -1,7 +1,7 @@
 class Public::RecordsController < ApplicationController
   def index
     @records = current_user.records.all
-    @month_record =@records.group("MONTH(day)")
+    @month_record =@records.group("MONTH(start_time)")
   end
   
   def show
@@ -9,14 +9,14 @@ class Public::RecordsController < ApplicationController
   end
   
   def new
-    record = Record.new
+    @record = Record.new
   end
   
     
   def create
-    record = Record.new(record_params)
-    record.user_id = current_user.id
-    record.save
+    @record = Record.new(record_params)
+    @record.user_id = current_user.id
+    @record.save
     redirect_to public_records_path
   end
   
@@ -40,6 +40,6 @@ class Public::RecordsController < ApplicationController
   private
   
   def record_params
-    params.permit(:sauna_name,:sauna_tempureture,:water_tempurature,:tempreture,:wether,:sets,:sauna_time,:water_time,:totonoi_time,:sauna_type,:rouryu,:totonoi_ratio, :user_id, :day)
+    params.require(:record).permit(:sauna_name,:sauna_tempureture,:water_tempurature,:tempreture,:wether,:sets,:sauna_time,:water_time,:totonoi_time,:sauna_type,:rouryu,:totonoi_ratio, :user_id, :start_time)
   end
 end

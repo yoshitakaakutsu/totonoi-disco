@@ -1,8 +1,47 @@
 <%= render '/header' %>
 
+
+<div class="container">
+
 <h1>サ活詳細</h1>
 
-  <%= @record.day %>>
+  <table class="table">
+        <tr>
+          <th>日付</th>
+          <td> <%= @record.start_time.strftime("%Y/%m/%d") %></td>
+        </tr>
+        <tr>
+          <th>サウナ名</th>
+          <td><%= @record.sauna_name %></td>
+        </tr>
+        <tr>
+          <th>サウナ温度</th>
+          <td><%= @record.sauna_tempureture %>℃</td>
+        </tr>
+        <tr>
+          <th>水風呂温度</th>
+          <td><%= @record.water_tempurature %>℃</td>
+        </tr>
+        <tr>
+          <th>外気（内気）温度</th>
+          <td> <%= @record.tempreture %>℃</td>
+        </tr>
+        <tr>
+          <th>天気</th>
+          <td><%= @record.wether %></td>
+        </tr>
+        <tr>
+          <th>セット数</th>
+          <td><%= @record.sets %>回</td>
+        </tr>
+        <tr>
+          <th>水風呂温度</th>
+          <td><%= @record.water_tempurature %></td>
+        </tr>
+    　</table>
+    </div>
+
+  <%= @record.start_time.strftime("%Y/%m/%d") %>
   <h4>サウナ名</h4>
       <%= @record.sauna_name %></br>
     <h4>サウナ温度</h4>
@@ -31,3 +70,6 @@
           <%= link_to "編集する", edit_public_record_path(@record.id) %>
 
            <%= link_to "削除する", public_record_path(@record.id), method: :delete %>
+
+
+　</div>
