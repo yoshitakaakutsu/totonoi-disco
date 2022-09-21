@@ -63,6 +63,8 @@
         </tr>
     　</table>
 　　<p class="d-flex align-items-center justify-content-center">
+　　  <%if @record.user_id == current_user %>
 　　  <%= link_to "編集する", edit_public_record_path(@record.id) %> | <%= link_to "削除する", public_record_path(@record.id), method: :delete %>
+　　  <% end %>
 　　</p>
 　</div>

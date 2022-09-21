@@ -2,6 +2,7 @@ class Public::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @post = @user.posts.page(params[:page]).per(5).order(id: "DESC").where(status: :published)
+    @records = @user.records.all
   end
   
   def edit

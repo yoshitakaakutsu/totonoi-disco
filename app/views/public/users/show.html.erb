@@ -15,22 +15,23 @@
           <th>ニックネーム</th>
           <td><%= @user.nickname %></td>
         </tr>
-        <tr>
-          <th>名前</th>
-          <td><%= @user.last_name %><%= @user.first_name %></td>
-        </tr>
-        <tr>
-          <th>名前（フリガナ）</th>
-          <td><%= @user.last_name_kana %><%= @user.first_name_kana %></td>
-        </tr>
-        <tr>
-          <th>メールアドレス</th>
-          <td><%= @user.email %></td>
-        </tr>
     　</table>
     　<p>
-        <%= link_to "プロフィール編集", edit_public_user_path(@user) %> | <%= link_to "いいね一覧", good_public_user_path(current_user.id) %>
+    　<% if @user == current_user %>
+        <%= link_to "プロフィール編集", edit_public_user_path(@user) %>  | 
+      <% end %> <%= link_to "いいね一覧", good_public_user_path(current_user.id) %>
       </p>
+      
+      <div>
+        <%= month_calendar events: @records do |date, records| %>
+          <%= date.day %>
+          <% records.each do |record| %>
+          <div>
+            <%= link_to record.totonoi_ratio, public_record_path(record.id) %>%
+          </div>
+          <% end %>
+        <% end %>
+      </div>
       
       <div>
         
