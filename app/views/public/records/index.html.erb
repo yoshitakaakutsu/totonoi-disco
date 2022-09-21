@@ -8,15 +8,18 @@
     <% records.each do |record| %>
       <div>
         <%= link_to record.sauna_name, public_record_path(record.id) %></br>
-        ととのい度 : <%= record.totonoi_ratio %>
+        ととのい度 : <%= record.totonoi_ratio %>%
       </div>
     <% end %>
   <% end %>
-
   
+
+　  
  
   
   <%= link_to "記録する", new_public_record_path %>
+  
+
   
   
   </div>

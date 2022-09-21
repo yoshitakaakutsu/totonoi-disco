@@ -26,12 +26,10 @@ class Post < ApplicationRecord
   end
   
   def create_notification_comment!(current_user, comment_id)
-    # 自分以外にコメントしている人をすべて取得し、全員に通知を送る
     temp_ids = Comment.select(:user_id).where(post_id: id).where.not(user_id: current_user.id).distinct
     temp_ids.each do |temp_id|
       save_notification_comment!(current_user, comment_id, temp_id['user_id'])
     end
-    # まだ誰もコメントしていない場合は、投稿者に通知を送る
     save_notification_comment!(current_user, comment_id, user_id) if temp_ids.blank?
   end
 
@@ -46,6 +44,18 @@ class Post < ApplicationRecord
       notification.checked = true
     end
     notification.save if notification.valid?
+  end
+  
+  validates :sauna, presence: true
+  validates :text, presence: true
+  validates :status, presence: true
+  
+  def self.search(search)
+    if search != ""
+      Post.where(['sauna LIKE(?) OR text LIKE(?)', "%#{search}%", "%#{search}%"])
+    else
+      Post.includes(:user).order('created_at DESC')
+    end
   end
   
   

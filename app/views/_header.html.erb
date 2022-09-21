@@ -32,10 +32,9 @@
         <p class="offset-md-3">ようこそ<%= current_user.nickname %>さん！</p>
       <% end %>
       
-    <%= form_with url: search_public_posts_path, local: true, method: :get do |form| %>
-      <%= form.text_field :keyword %>
-      <%= form.submit "検索" %>
-    <% end %>
+ 
+    
+    <%= render 'public/searchs/form' %>
 
 
      

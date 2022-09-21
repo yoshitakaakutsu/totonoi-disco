@@ -1,32 +1,62 @@
 <%= render '/header' %>
 
+<div class="container">
+
 <h1>サ活編集</h1>
 
 <%= form_with model: @record, url: public_record_path, method: :patch do |f| %>
-　<h4>日付</h4>
-　　　<%= f.date_field :start_time %></br>
-  <h4>サウナ名</h4>
-      <%= f.text_field :sauna_name %></br>
-    <h4>サウナ温度</h4>
-      <%= f.text_field :sauna_tempureture %>℃</br>
-    <h4>水風呂温度</h4>
-      <%= f.text_field :water_tempurature %>℃</br>
-    <h4>外気（内気）温度</h4>
-      <%= f.text_field :tempreture %>℃</br>
-    <h4>天気</h4>
-      <%= f.text_field :wether %></br>
-    <h4>セット数</h4>
-      <%= f.text_field :sets %>回</br>
-    <h4>内訳</h4>
-      <p>サウナ</p>
-        <%= f.text_field :sauna_time %>分</br>
-      <p>水風呂</p>
-        <%= f.text_field :water_time %>分</br>
-      <p>休憩</p>
-        <%= f.text_field :totonoi_time %>分</br>
-    <h4>ロウリュ</h4>
-      <%= f.text_field :rouryu %></br>
-    <h4>ととのい度<h4>
-      <%= f.text_field :totonoi_ratio %>%</br>
-    <%= f.submit '変更内容を保存' %>
-<% end %>
+  
+  <div>
+    <%= f.date_field :start_time %>
+    </div>
+  
+    <div class="field">
+      <%= f.label :サウナ名, class: "col-3 col-form-label font-weight-bold" %>
+      <%= f.text_field :sauna_name %>
+    </div>
+    <div class="field">
+      <%= f.label :サウナ温度, class: "col-3 col-form-label font-weight-bold" %>
+       <%= f.text_field :sauna_tempureture %>℃
+    </div>
+    <div class="field">
+      <%= f.label :水風呂温度, class: "col-3 col-form-label font-weight-bold" %>
+      <%= f.text_field :water_tempurature %>℃
+    </div>
+    <div class="field">
+      <%= f.label :外気（内気）温度, class: "col-3 col-form-label font-weight-bold" %>
+      <%= f.text_field :tempreture %>℃
+    </div>
+    <div class="field">
+      <%= f.label :天気, class: "col-3 col-form-label font-weight-bold" %>
+      <%= f.text_field :wether %>
+    </div>
+    <div class="field">
+      <%= f.label :セット数, class: "col-3 col-form-label font-weight-bold" %>
+      <%= f.text_field :sets %>回
+    </div>
+    <div class="field">
+      <%= f.label :サウナ時間, class: "col-3 col-form-label font-weight-bold" %>
+      <%= f.text_field :sauna_time %>分
+    </div>
+    <div class="field">
+      <%= f.label :水風呂時間, class: "col-3 col-form-label font-weight-bold" %>
+      <%= f.text_field :water_time %>分
+    </div>
+    <div class="field">
+      <%= f.label :休憩時間, class: "col-3 col-form-label font-weight-bold" %>
+      <%= f.text_field :totonoi_time %>分
+    </div>
+    <div class="field">
+      <%= f.label :ロウリュ, class: "col-3 col-form-label font-weight-bold" %>
+      <%= f.text_field :rouryu %>
+    </div>
+    <div class="field">
+      <%= f.label :ととのい度, class: "col-3 col-form-label font-weight-bold" %>
+      <%= f.text_field :totonoi_ratio %>%
+    </div>
+    <div class="actions col-8">
+      <%= f.submit '変更内容を保存' %>
+    </div>
+  <% end %>
+
+</div>

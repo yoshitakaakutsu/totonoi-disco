@@ -1,7 +1,6 @@
 class Public::RecordsController < ApplicationController
   def index
     @records = current_user.records.all
-    @month_record =@records.group("MONTH(start_time)")
   end
   
   def show
@@ -16,8 +15,11 @@ class Public::RecordsController < ApplicationController
   def create
     @record = Record.new(record_params)
     @record.user_id = current_user.id
-    @record.save
-    redirect_to public_records_path
+    if @record.save
+      redirect_to public_records_path
+    else
+      render :new
+    end
   end
   
   def edit 
