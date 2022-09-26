@@ -8,38 +8,44 @@
   <div class="container">
   
     <h2 class="font-weight-bold">みんなのサ活</h2>
-    <p class="ml-3 lead">サウナに行った記録をみんなで共有しよう！</p>
+    <p class="ml-3 lead">みんなのサウナの活動記録を覗いてみよう！</p>
     
-    <div class="col-md-12 col-lg-8">
-    <div class="card-list-container py-5">
-      <% @posts.each do |post| %>
-        <div class="card mx-auto mt-1 shadow-lg">
-          <div class="card-body">
-            <div class="row">
-              <div class="col-2">
-                <%= image_tag post.user.get_profile_image(70,70), class:"mt-3 rounded-circle"; %>
-              </div>
-              <div class="col-lg-10 col-xs-12">
-                <p class="card-title">
+    <div class="col-md-12 col-lg-7 ">
+      <div class="card-list-container py-5 ml-5">
+        <% @posts.each do |post| %>
+          <div class="card mx-auto mt-1 shadow-lg">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-lg-2 ">
+                  <%= image_tag post.user.get_profile_image(50,50), class:"mt-3 rounded-circle"; %>
+                </div>
+                <p class="card-title d-flex align-items-center justify-content-center ml-3">
                   <strong><%= post.user.nickname %></strong>
                 </p>
-                <p class="card-title">
-                  サウナ名：<%= post.sauna %>
+              </div>
+              <div class="col-lg-10 col-xs-12">
+                <p class="card-title font-weight-bold mt-3">
+                  <%= post.sauna %>
                 </p>
-                <p class="card-text">
+                <p class="card-text ml-3">
                   <%= post.text %>
                 </p>
-                <p class="card-text">
-                  <%= post.created_at.strftime('%Y/%m/%d') %>
-                </P>  
-                <%= "コメント　#{post.comments.count}件" %> 
-                <i class="far fa-heart"></i><%= "　#{post.goods.count}件" %>
+                <div>
+                  <i class="far fa-comment"></i><%= " #{post.comments.count}" %> 
+                  <i class="far fa-heart ml-4"></i><%= " #{post.goods.count}" %>
+                  <div class="text-left">
+                    <%= post.created_at.strftime('%Y/%m/%d') %>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      <% end %>
-      <%= paginate @posts %>
+        <% end %>
+        <%= paginate @posts %>
+      </div>
     </div>
+    
+   
+    
     </div>
   </div>

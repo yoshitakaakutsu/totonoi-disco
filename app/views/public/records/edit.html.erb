@@ -2,59 +2,71 @@
 
 <div class="container">
 
-<h1>サ活編集</h1>
+  <h2 class="font-weight-bold d-flex align-items-center justify-content-center mb-4 mt-4">サ活編集</h2>
 
-<%= form_with model: @record, url: public_record_path, method: :patch do |f| %>
+  <%= form_with model: @record, url: public_record_path, method: :patch do |f| %>
   
-  <div>
-    <%= f.date_field :start_time %>
+    <div class="field d-flex align-items-center justify-content-center">
+      <%= f.label :日時, class: "col-sm-6 col-lg-3 col-form-label font-weight-bold" %>
+      <%= f.date_field :start_time %>
     </div>
   
-    <div class="field">
-      <%= f.label :サウナ名, class: "col-3 col-form-label font-weight-bold" %>
+    <div class="field d-flex align-items-center justify-content-center">
+      <%= f.label :サウナ名, class: "col-sm-6 col-lg-3 col-form-label font-weight-bold" %>
       <%= f.text_field :sauna_name %>
     </div>
-    <div class="field">
-      <%= f.label :サウナ温度, class: "col-3 col-form-label font-weight-bold" %>
-       <%= f.text_field :sauna_tempureture %>℃
+  
+    <div class="field d-flex align-items-center justify-content-center">
+      <%= f.label :サウナ温度, class: "col-sm-6 col-lg-3 col-form-label font-weight-bold" %>
+      <%= f.text_field :sauna_tempureture %>℃
     </div>
-    <div class="field">
-      <%= f.label :水風呂温度, class: "col-3 col-form-label font-weight-bold" %>
+  
+    <div class="field d-flex align-items-center justify-content-center">
+      <%= f.label :水風呂温度, class: "col-sm-6 col-lg-3 col-form-label font-weight-bold" %>
       <%= f.text_field :water_tempurature %>℃
     </div>
-    <div class="field">
-      <%= f.label :外気（内気）温度, class: "col-3 col-form-label font-weight-bold" %>
+  
+    <div class="field d-flex align-items-center justify-content-center">
+      <%= f.label :外気（内気）温度, class: "col-sm-6 col-lg-3 col-form-label font-weight-bold" %> 
       <%= f.text_field :tempreture %>℃
     </div>
-    <div class="field">
-      <%= f.label :天気, class: "col-3 col-form-label font-weight-bold" %>
+    
+    <div class="field d-flex align-items-center justify-content-center">
+      <%= f.label :天気, class: "col-sm-6 col-lg-3 col-form-label font-weight-bold" %>
       <%= f.text_field :wether %>
     </div>
-    <div class="field">
-      <%= f.label :セット数, class: "col-3 col-form-label font-weight-bold" %>
+  
+    <div class="field d-flex align-items-center justify-content-center">
+      <%= f.label :セット数, class: "col-sm-6 col-lg-3 col-form-label font-weight-bold" %>
       <%= f.text_field :sets %>回
     </div>
-    <div class="field">
-      <%= f.label :サウナ時間, class: "col-3 col-form-label font-weight-bold" %>
+  
+    <div class="field d-flex align-items-center justify-content-center">
+      <%= f.label :サウナ時間, class: "col-sm-6 col-lg-3 col-form-label font-weight-bold" %>
       <%= f.text_field :sauna_time %>分
     </div>
-    <div class="field">
-      <%= f.label :水風呂時間, class: "col-3 col-form-label font-weight-bold" %>
+   
+    <div class="field d-flex align-items-center justify-content-center">
+      <%= f.label :水風呂時間, class: "col-sm-6 col-lg-3 col-form-label font-weight-bold" %>
       <%= f.text_field :water_time %>分
     </div>
-    <div class="field">
-      <%= f.label :休憩時間, class: "col-3 col-form-label font-weight-bold" %>
+  
+    <div class="field d-flex align-items-center justify-content-center">
+      <%= f.label :休憩時間, class: "col-sm-6 col-lg-3 col-form-label font-weight-bold" %>
       <%= f.text_field :totonoi_time %>分
     </div>
-    <div class="field">
-      <%= f.label :ロウリュ, class: "col-3 col-form-label font-weight-bold" %>
+  
+    <div class="field d-flex align-items-center justify-content-center">
+      <%= f.label :ロウリュ, class: "col-sm-6 col-lg-3 col-form-label font-weight-bold" %>
       <%= f.text_field :rouryu %>
     </div>
-    <div class="field">
-      <%= f.label :ととのい度, class: "col-3 col-form-label font-weight-bold" %>
+    
+    <div class="field d-flex align-items-center justify-content-center">
+      <%= f.label :ととのい度, class: "col-sm-6 col-lg-3 col-form-label font-weight-bold" %>
       <%= f.text_field :totonoi_ratio %>%
     </div>
-    <div class="actions col-8">
+  
+    <div class="actions d-flex align-items-center justify-content-center mt-4">
       <%= f.submit '変更内容を保存' %>
     </div>
   <% end %>

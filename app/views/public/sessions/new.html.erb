@@ -2,24 +2,26 @@
 
 <div class= "container">
   
-  <h2>ログイン</h2>
+  <h2 class="font-weight-bold d-flex align-items-center justify-content-center mb-4">ログイン</h2>
 
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <div class="field">
-      <%= f.label :メールアドレス, class: "col-sm-12 col-lg-3 col-form-label" %>
-      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <div class="field  d-flex align-items-center justify-content-center">
+      <%= f.label :メールアドレス, class: "col-sm-6 col-lg-3 col-form-label font-weight-bold" %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "ml-5" %>
     </div>
 
-    <div class="field">
-      <%= f.label :パスワード, class: "col-sm-12 col-lg-3 col-form-label" %>
-      <%= f.password_field :password, autocomplete: "current-password" %>
+    <div class="field d-flex align-items-center justify-content-center">
+      <%= f.label :パスワード, class: "col-sm-6 col-lg-3 col-form-label font-weight-bold" %>
+      <%= f.password_field :password, autocomplete: "current-password", class: "ml-5" %>
     </div>
 
-    <div class="actions col-8">
+    <div class="actions ml-4 mt-3 d-flex align-items-center justify-content-center">
       <%= f.submit "ログイン" %>
     </div>
   <% end %>
-
-  <%= render "public/shared/links" %>
+  
+  <div class="d-flex align-items-center justify-content-center">
+    <%= render "public/shared/links" %>
+  </div>
 
 </div>

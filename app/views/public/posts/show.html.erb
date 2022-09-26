@@ -2,81 +2,87 @@
 
 <div class="container">
 
-<h1>投稿詳細</h1>
-
-  <div class="card-list-container py-5">
-    <div class="card w-50 mx-auto mt-4 shadow-lg">
-      <div class="card-body">
-        <div class="row">
-          <div class="col-2">
-            <%= link_to public_user_path(@post.user.id) do %><%= image_tag @post.user.get_profile_image(70,70), class:"mt-3 rounded-circle" %><% end %>
-           </div>
-          <div class="col-10">
-            <p class="card-title">
+<h2 class="font-weight-bold d-flex align-items-center justify-content-center mt-4">投稿詳細</h2>
+  
+  <div class="col-md-12 col-lg-7 ">
+    <div class="card-list-container py-5 ml-5">
+      <div class="card mx-auto mt-1 shadow-lg">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-lg-2">
+              <%= link_to public_user_path(@post.user.id) do %><%= image_tag @post.user.get_profile_image(70,70), class:"mt-3 rounded-circle" %><% end %>
+            </div>
+            <p class="card-title d-flex align-items-center justify-content-center ml-3">  
               <strong><%= @post.user.nickname %></strong>
             </p>
-            <p class="card-title">
-              サウナ名：<%= link_to public_post_path(@post.id) do %><%= @post.sauna %><% end %>
+          </div>
+          <div class="col-lg-10 col-xs-12">
+            <p class="card-title font-weight-bold mt-3">
+              <%= @post.sauna %>
             </p>
-            <p class="card-text">
+            <p class="card-text ml-3">
               <%= @post.text %>
             </p>
-            <p class="card-text">
-              <%= @post.created_at.strftime('%Y/%m/%d') %>
-            </P>  
-                <%= "コメント　#{@post.comments.count}件" %> 
-                <% if @post.favorited_by?(current_user) %>
-                  <%= link_to public_post_goods_path(@post), method: :delete do %>
-                    ♥ <%= @post.goods.count %> いいね
-                  <% end %>
-                <% else %>
-                  <%= link_to public_post_goods_path(@post), method: :post do %>
-                    ♡ <%= @post.goods.count %> いいね
-                  <% end %>
+            <div>
+              <i class="far fa-comment"></i><%= " #{@post.comments.count}" %> 
+              <% if @post.favorited_by?(current_user) %>
+                <%= link_to public_post_goods_path(@post), method: :delete do %>
+                  ♥ <%= @post.goods.count %> 
                 <% end %>
-            <p>
-              <% if @post.user == current_user %>
-                <%= link_to "削除する", public_post_path(@post), method: :delete %>
+              <% else %>
+                <%= link_to public_post_goods_path(@post), method: :post do %>
+                  ♡ <%= @post.goods.count %> 
+                <% end %>
               <% end %>
-            </p>
+              <% if @post.user == current_user %>
+                <%= link_to "削除", public_post_path(@post), method: :delete, class: "text-dark ml-5" %>
+              <% end %>
+              <div class="text-left">
+                <%= @post.created_at.strftime('%Y/%m/%d') %>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-
-　<div class="card-list-container py-5">
-    <% @post.comments.each do |comment| %>
-      <div class="card w-50 mx-auto mt-4 shadow-lg">
-        <div class="card-body">
-          <div class="row">
-            <div class="col-2">
-              <%= image_tag comment.user.get_profile_image(70,70), class:"mt-3 rounded-circle"; %>
-            </div>
-            <div class="col-10">
-              <p class="card-title">
+    
+    <div class="card-list-container py-5 ml-5">
+      <% @post.comments.each do |comment| %>
+        <div class="card mx-auto mt-1 shadow-lg">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-lg-2">
+                <%= link_to public_user_path(comment.user.id) do %><%= image_tag comment.user.get_profile_image(70,70), class:"rounded-circle" %><% end %>
+              </div>
+              <p class="card-title d-flex align-items-center justify-content-center ml-3">  
                 <strong><%= comment.user.nickname %></strong>
               </p>
-              <p class="card-text">
+            </div>
+            <div class="col-lg-10 col-xs-12">
+              <p class="card-text ml-3 mt-4">
                 <%= comment.comment %>
               </p>
-              <p class="card-text">
-                <%= comment.created_at.strftime('%Y/%m/%d') %>
-              </P>  
-              <p class="card-text">
-                <% if comment.user_id == current_user %>
-                  <%= link_to "削除", public_post_comment_path(comment.post, comment), method: :delete %>
+              
+              <div>
+                <p class="card-text">
+                <% if comment.user == current_user %>
+                  <%= link_to "削除", public_post_comment_path(comment.post, comment), method: :delete, class: "text-dark" %>
                 <% end %>
-              </P> 
+                </P> 
+                  <div class="text-left">
+                    <%= comment.created_at.strftime('%Y/%m/%d') %>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
+      <% end %>
       </div>
-    <% end %>
-  </div>
+    </div>
+  
   <div class="w-50 mx-auto mt-4">
     <%= form_with model: [@post, @comment],url: public_post_comments_path(@post) do |f| %>
-      <%= f.text_area :comment, rows: '5', placeholder: "コメントを記入" %></br>
+      <%= f.text_area :comment, rows: '5', placeholder: "コメントを記入", class: "col-12" %></br>
       <%= f.submit "送信する" %>
     <% end %>
   </div>

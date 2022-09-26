@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   root to:"homes#top"
   
   get "/about" => "homes#about", as: "about"
-  get "/search" => "searchs#search", as: "search"
+
   
   namespace :public do
     resources :posts, only: [:new, :create, :index, :show, :destroy, :edit, :update] do
@@ -31,6 +31,8 @@ Rails.application.routes.draw do
       end
       
     end
+    
+      get "/search" => "searchs#search", as: "search"
     
     resources :users, only: [:show, :edit, :update] do
       resources :notifications, only: :index

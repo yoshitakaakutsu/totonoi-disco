@@ -3,68 +3,69 @@
 
 <div class="container">
 
-<h1>サ活詳細</h1>
+<h2 class="font-weight-bold d-flex align-items-center justify-content-center mb-4 mt-4">サ活詳細</h2>
 
   <table class="table col-lg-7 col-xs-12 mx-auto">
-        <tr>
-          <th>日付</th>
-          <td> <%= @record.start_time.strftime("%Y/%m/%d") %></td>
-        </tr>
-        <tr>
-          <th>サウナ名</th>
-          <td><%= @record.sauna_name %></td>
-        </tr>
-        <tr>
-          <th>サウナ温度</th>
-          <td><%= @record.sauna_tempureture %>℃</td>
-        </tr>
-        <tr>
-          <th>水風呂温度</th>
-          <td><%= @record.water_tempurature %>℃</td>
-        </tr>
-        <tr>
-          <th>外気（内気）温度</th>
-          <td> <%= @record.tempreture %>℃</td>
-        </tr>
-        <tr>
-          <th>天気</th>
-          <td><%= @record.wether %></td>
-        </tr>
-        <tr>
-          <th>セット数</th>
-          <td><%= @record.sets %>回</td>
-        </tr>
-        <tr>
-          <th>水風呂温度</th>
-          <td><%= @record.water_tempurature %></td>
-        </tr>
-        　<th>サウナ時間</th>
-          <td><%= @record.sauna_time %>分</td>
-        </tr>
-        <tr>
-          <th>水風呂時間</th>
-          <td><%= @record.water_time %>分</td>
-        </tr>
-        <tr>
-          <th>水風呂温度</th>
-          <td><%= @record.water_tempurature %>℃</td>
-        </tr>
-        <tr>
-          <th>休憩時間</th>
-          <td><%= @record.totonoi_time %>分</td>
-        </tr>
-        <tr>
-          <th>ロウリュ</th>
-          <td><%= @record.rouryu %></td>
-        </tr>
-        <tr>
-          <th>ととのい度</th>
-          <td><%= @record.totonoi_ratio %>%</td>
-        </tr>
-    　</table>
-　　<p class="d-flex align-items-center justify-content-center">
-　　  <%if @record.user_id == current_user %>
-　　  <%= link_to "編集する", edit_public_record_path(@record.id) %> | <%= link_to "削除する", public_record_path(@record.id), method: :delete %>
-　　  <% end %>
-　　</p>
+    <tr>
+      <th>日付</th>
+      <td> <%= @record.start_time.strftime("%Y/%m/%d") %></td>
+    </tr>
+    <tr>
+      <th>サウナ名</th>
+      <td><%= @record.sauna_name %></td>
+    </tr>
+    <tr>
+      <th>サウナ温度</th>
+      <td><%= @record.sauna_tempureture %>℃</td>
+    </tr>
+    <tr>
+      <th>水風呂温度</th>
+      <td><%= @record.water_tempurature %>℃</td>
+    </tr>
+    <tr>
+      <th>外気（内気）温度</th>
+      <td> <%= @record.tempreture %>℃</td>
+    </tr>
+    <tr>
+      <th>天気</th>
+      <td><%= @record.wether %></td>
+    </tr>
+    <tr>
+      <th>セット数</th>
+      <td><%= @record.sets %>回</td>
+    </tr>
+    <tr>
+      <th>水風呂温度</th>
+      <td><%= @record.water_tempurature %></td>
+    </tr>
+      <th>サウナ時間</th>
+      <td><%= @record.sauna_time %>分</td>
+    </tr>
+    <tr>
+      <th>水風呂時間</th>
+      <td><%= @record.water_time %>分</td>
+    </tr>
+    <tr>
+      <th>水風呂温度</th>
+      <td><%= @record.water_tempurature %>℃</td>
+    </tr>
+    <tr>
+      <th>休憩時間</th>
+      <td><%= @record.totonoi_time %>分</td>
+    </tr>
+    <tr>
+      <th>ロウリュ</th>
+      <td><%= @record.rouryu %></td>
+    </tr>
+    <tr>
+      <th>ととのい度</th>
+      <td><%= @record.totonoi_ratio %>%</td>
+    </tr>
+  </table>
+  
+　<p class="d-flex align-items-center justify-content-center mt-5">
+　　<%if @record.user == current_user %>
+　　  <%= link_to "編集する", edit_public_record_path(@record.id), class: "text-secondary" %> / <%= link_to "削除する", public_record_path(@record.id), method: :delete, class: "text-secondary" %>
+　　<% end %>
+　</p>
 　</div>
