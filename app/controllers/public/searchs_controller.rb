@@ -9,11 +9,11 @@ class Public::SearchsController < ApplicationController
   private
   def search_for(model, content)
     if model == 'user'
-      User.where('nickname LIKE ?', '%'+content+'%')
+      User.order(id: "DESC").where('nickname LIKE ?', '%'+content+'%')
     elsif model == 'sauna'
-      Post.where('sauna LIKE ?', '%'+content+'%')
+      Post.page(params[:page]).per(5).order(id: "DESC").where('sauna LIKE ?', '%'+content+'%')
     elsif model == 'keyword'
-      Post.where('text LIKE ?', '%'+content+'%')
+      Post.page(params[:page]).per(5).order(id: "DESC").where('text LIKE ?', '%'+content+'%')
     end
   end
 end

@@ -10,7 +10,7 @@
     <h2 class="font-weight-bold">みんなのサ活</h2>
     <p class="ml-3 lead">みんなのサウナの活動記録を覗いてみよう！</p>
     
-    <div class="col-md-12 col-lg-7 ">
+    <div class="col-md-12 col-lg-7">
       <div class="card-list-container py-5 ml-5">
         <% @posts.each do |post| %>
           <div class="card mx-auto mt-1 shadow-lg">
@@ -42,10 +42,8 @@
           </div>
         <% end %>
         <%= paginate @posts %>
+        </div>
       </div>
     </div>
     
-   
-    
-    </div>
   </div>

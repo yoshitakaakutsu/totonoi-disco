@@ -16,7 +16,7 @@ class Public::RecordsController < ApplicationController
     @record = Record.new(record_params)
     @record.user_id = current_user.id
     if @record.save
-      redirect_to public_records_path
+      redirect_to public_user_path(current_user.id)
     else
       render :new
     end
@@ -30,13 +30,13 @@ class Public::RecordsController < ApplicationController
     record = Record.find(params[:id])
     record.user_id = current_user.id
     record.update(record_params)
-    redirect_to public_records_path
+    redirect_to public_user_path(current_user.id)
   end
   
   def destroy
     record = Record.find(params[:id])
     record.destroy
-    redirect_to public_records_path
+    redirect_to public_user_path(current_user.id)
   end
   
   private

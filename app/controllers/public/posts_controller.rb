@@ -10,8 +10,12 @@ class Public::PostsController < ApplicationController
   def  create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
-    if @post.save
+    if @post.status == "published"
+      @post.save
       redirect_to public_posts_path
+    elsif @post.status == "draft"
+      @post.save
+      redirect_to confirm_public_post_path(current_user.id)
     else 
       render :new
     end
@@ -24,12 +28,17 @@ class Public::PostsController < ApplicationController
   
   def destroy
     @post = Post.find(params[:id])
-    @post.destroy
-    redirect_to root_path
+    if @post.status == "published"
+      @post.destroy
+      redirect_to public_posts_path
+    else
+      @post.destroy
+      redirect_to confirm_public_post_path(current_user.id)
+    end
   end
   
   def confirm
-    @posts = current_user.posts.where(status: :draft)
+    @posts = current_user.posts.order(id: "DESC").where(status: :draft)
   end
   
   def edit
@@ -38,8 +47,13 @@ class Public::PostsController < ApplicationController
   
   def update
     @posts = Post.find(params[:id])
-    @posts.update(post_params)
-    redirect_to public_posts_path
+    if @posts.status == "draft"
+      @posts.update(post_params)
+      redirect_to confirm_public_post_path(current_user.id)
+    else
+      @posts.update(post_params)
+      redirect_to public_posts_path
+    end
   end
   
   
