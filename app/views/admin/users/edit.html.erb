@@ -41,6 +41,8 @@
     <%= f.submit '変更を保存', class: "col-md-2 btn btn-success offset-md-3" %>
   </form>
   <% end %>
+  
+  <%= link_to "退会させる", admin_user_path, method: :delete, "data-confirm" => "本当に退会させますか？", class: "btn btn-danger ml-3" %>
 
 
 

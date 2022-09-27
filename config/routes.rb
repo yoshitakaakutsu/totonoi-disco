@@ -34,12 +34,10 @@ Rails.application.routes.draw do
     
       get "/search" => "searchs#search", as: "search"
     
-    resources :users, only: [:show, :edit, :update] do
+    resources :users, only: [:show, :edit, :update, :destroy] do
       resources :notifications, only: :index
       
-      collection do
-        patch 'withdraw'
-      end
+
       member do
         get 'good'
       end
@@ -49,7 +47,7 @@ Rails.application.routes.draw do
   end
   
   namespace :admin do
-    resources :users, only: [:index, :show, :edit, :update]
+    resources :users, only: [:index, :show, :edit, :update, :destroy]
     
     resources :posts, only: [:index, :show, :destroy]
     

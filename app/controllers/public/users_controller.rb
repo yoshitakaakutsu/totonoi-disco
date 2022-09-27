@@ -21,13 +21,13 @@ class Public::UsersController < ApplicationController
     @good_posts = Post.find(goods)
   end
   
-  def withdraw
-    @user = current_user
-    @user.update(is_deleted: true)
-    reset_session
-    flash[:notice] = "退会処理を実行いたしました"
-    redirect_to root_path
+  def destroy
+    @user = User.find(params[:id]) 
+    @user.destroy
+    flash[:notice] = '退会処理を実行いたしました。'
+    redirect_to root_path #削除に成功すればrootページに戻る
   end
+ 
   
   private
   
