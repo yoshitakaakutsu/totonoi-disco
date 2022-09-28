@@ -17,9 +17,19 @@
                   <strong><%= post.user.nickname %></strong>
                 </p>
                 <div class="col-lg-10 col-xs-12">
-                  <p class="card-title font-weight-bold mt-3">
-                    <%= link_to public_post_path(post.id) do %><%= post.sauna %><% end %>
-                  </p>
+                  <% if user_signed_in? %>
+                    <p class="card-title font-weight-bold mt-3">
+                      <%= link_to public_post_path(post.id), class: "text-dark" do %><%= post.sauna %><% end %>
+                    </p>
+                  <% elsif admin_signed_in? %>
+                    <p class="card-title font-weight-bold mt-3">
+                      <%= link_to admin_post_path(post.id), class: "text-dark" do %><%= post.sauna %><% end %>
+                    </p>
+                  <% else %>
+                    <p class="card-title font-weight-bold mt-3">
+                      <%= link_to new_user_session_path, class: "text-dark" do %><%= post.sauna %><% end %>
+                    </p>
+                  <% end %>
                   <p class="card-text ml-3">
                     <%= post.text %>
                   </p>
@@ -41,9 +51,21 @@
   <% elsif @model == 'user' %>
     <h2 class="font-weight-bold d-flex align-items-center justify-content-center mt-4">検索ワード：<%= @content %></h2>
     <% @records.each do |user| %>
-      <%= link_to public_user_path(user.id) do %>
-        <%= image_tag user.get_profile_image(100,100), class:"mt-3 rounded-circle" %>
-        <%= user.nickname %>
+      <% if user_signed_in? %>
+        <%= link_to public_user_path(user.id) do %>
+          <%= image_tag user.get_profile_image(100,100), class:"mt-3 rounded-circle" %>
+          <%= user.nickname %>
+        <% end %>
+      <% elsif admin_signed_in? %>
+        <%= link_to admin_user_path(user.id) do %>
+          <%= image_tag user.get_profile_image(100,100), class:"mt-3 rounded-circle" %>
+          <%= user.nickname %>
+        <% end %>
+      <% else %>
+        <%= link_to new_user_session_path do %>
+          <%= image_tag user.get_profile_image(100,100), class:"mt-3 rounded-circle" %>
+          <%= user.nickname %>
+        <% end %>
       <% end %>
     <% end %>
   <% else %>
@@ -61,9 +83,19 @@
                 <strong><%= post.user.nickname %></strong>
                </p>
               <div class="col-lg-10 col-xs-12">
-                <p class="card-title font-weight-bold mt-3">
-                  <%= link_to public_post_path(post.id) do %><%= post.sauna %><% end %>
-                </p>
+                <% if user_signed_in? %>
+                  <p class="card-title font-weight-bold mt-3">
+                    <%= link_to public_post_path(post.id), class: "text-dark" do %><%= post.sauna %><% end %>
+                  </p>
+                <% elsif admin_signed_in? %>
+                  <p class="card-title font-weight-bold mt-3">
+                    <%= link_to admin_post_path(post.id), class: "text-dark" do %><%= post.sauna %><% end %>
+                  </p>
+                <% else %>
+                  <p class="card-title font-weight-bold mt-3">
+                    <%= link_to new_user_session_path, class: "text-dark" do %><%= post.sauna %><% end %>
+                  </p>
+                <% end %>
                 <p class="card-text ml-3">
                   <%= post.text %>
                 </p>
