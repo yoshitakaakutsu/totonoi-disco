@@ -1,10 +1,11 @@
 <%= render '/header' %>
 
 <div class="container">
-  <h3 class="ml-5 mt-3 mb-5 bg-light pl-2 pr-2 pt-2 col-4"><%= @user.last_name %><%= @user.first_name %>さんの会員詳細</h3>
+  
+  <h2 class="font-weight-bold d-flex align-items-center justify-content-center mt-4"><%= @user.last_name %><%= @user.first_name %>さんの会員詳細</h2>
   
   <div class="row">
-    <div class="col-4">
+    <div class="col-sm-12 col-lg-4">
       <table class="table table-borderless" style="hight: 150">
         <tr>
           <th style="width: 40%">会員ID</th>
@@ -19,6 +20,10 @@
           <td><%= @user.last_name_kana %><%= @user.first_name_kana %></td>
         </tr>
         <tr>
+          <th>ユーザー画像</th>
+          <td><%= image_tag @user.get_profile_image(80,80), class:"mt-3 rounded-circle" %></td>
+        </tr>
+        <tr>
           <th>ニックネーム</th>
           <td><%= @user.nickname %></td>
 　      </tr>
@@ -27,46 +32,63 @@
           <td><%= @user.email %></td>
         </tr>
         <tr>
-          <th>ステータス</th>
-          <td><%= @user.is_deleted ? '退会' : '有効' %></td>
-        </tr>
-        <tr>
           <th></th>
           <td>
             <%= link_to "編集する", edit_admin_user_path, class: "btn btn-success" %>
           </td>
         </tr>
       </table>
-    </div>
-      
-    <div class="col-8">
-      <div class="card-list-container py-5">
-        <% @post.each do |post| %>
-        <div class="card w-50 mx-auto mt-4 shadow-lg">
-          <div class="card-body">
-            <div class="row">
-              <div class="col-2">
-                <%= image_tag post.user.get_profile_image(70,70), class:"mt-3 rounded-circle"; %>
-              </div>
-              <div class="col-10">
-                <p class="card-title">
-                  <strong><%= post.user.nickname %></strong>
-                </p>
-                <p class="card-title">
-                  サウナ名：<%= link_to public_post_path(post.id) do %><%= post.sauna %><% end %>
-                </p>
-                <p class="card-text">
-                  <%= post.text %>
-                </p>
-                <p class="card-text">
-                  <%= post.created_at.strftime('%Y/%m/%d') %>
-                </P>  
-                <%= "コメント　#{post.comments.count}件" %> 
-                <i class="far fa-heart"></i><%= "　#{post.goods.count}件" %>
-              </div>
-            </div>
-          </div>
+    
+      <div>
+        <div>
+          <h4 class="font-weight-bold d-flex align-items-center justify-content-center mt-5">サ活記録</h4>
         </div>
+        <%= month_calendar events: @records do |date, records| %>
+          <%= date.day %>
+          <% records.each do |record| %>
+          <div>
+            <%= link_to record.totonoi_ratio, public_record_path(record.id), class: "text-dark" %>%
+          </div>
+          <% end %>
         <% end %>
       </div>
     </div>
+      
+      
+   <div class="col-md-12 col-lg-7 ">
+      <div class="card-list-container py-5 ml-5">
+        <% @post.each do |post| %>
+          <div class="card mx-auto mt-1 shadow-lg">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-lg-2 ">
+                  <%= image_tag post.user.get_profile_image(50,50), class:"rounded-circle"; %>
+                </div>
+                <p class="card-title d-flex align-items-center justify-content-center ml-3">
+                  <strong><%= post.user.nickname %></strong>
+                </p>
+              </div>
+              <div class="col-lg-10 col-xs-12">
+                <p class="card-title font-weight-bold mt-3">
+                  <%= link_to admin_post_path(post.id), class: "text-dark" do %><%= post.sauna %><% end %>
+                </p>
+                <p class="card-text ml-3">
+                  <%= post.text %>
+                </p>
+                <div>
+                  <i class="far fa-comment"></i><%= " #{post.comments.count}" %> 
+                  <i class="far fa-heart ml-4"></i><%= " #{post.goods.count}" %>
+                  <div class="text-left">
+                    <%= post.created_at.strftime('%Y/%m/%d') %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+        <%= paginate @post %>
+      </div>
+    </div>
+    
+  </div>
+</div>

@@ -1,11 +1,12 @@
 class Admin::UsersController < ApplicationController
   def index
-    @users = User.all
+    @users = User.page(params[:page]).per(15)
   end
 
   def show
     @user = User.find(params[:id])
     @post = @user.posts.page(params[:page]).per(5).order(id: "DESC").where(status: :published)
+    @records = @user.records.all
   end
 
   def edit
