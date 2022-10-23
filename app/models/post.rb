@@ -3,13 +3,13 @@ class Post < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :goods, dependent: :destroy
   has_many :notifications, dependent: :destroy
-  
+
   def favorited_by?(user)
     goods.exists?(user_id: user.id)
   end
-  
+
   enum status: {published: 0, draft: 1}
-  
+
   def create_notification_like!(current_user)
     temp = Notification.where(["visitor_id = ? and visited_id = ? and post_id = ? and action = ? ", current_user.id, user_id, id, 'like'])
     if temp.blank?
@@ -24,7 +24,7 @@ class Post < ApplicationRecord
       notification.save if notification.valid?
     end
   end
-  
+
   def create_notification_comment!(current_user, comment_id)
     temp_ids = Comment.select(:user_id).where(post_id: id).where.not(user_id: current_user.id).distinct
     temp_ids.each do |temp_id|
@@ -45,11 +45,11 @@ class Post < ApplicationRecord
     end
     notification.save if notification.valid?
   end
-  
+
   validates :sauna, presence: true
   validates :text, presence: true
   validates :status, presence: true
-  
+
   def self.search(search)
     if search != ""
       Post.where(['sauna LIKE(?) OR text LIKE(?)', "%#{search}%", "%#{search}%"])
@@ -57,7 +57,7 @@ class Post < ApplicationRecord
       Post.includes(:user).order('created_at DESC')
     end
   end
-  
-  
-  
+
+
+
 end
