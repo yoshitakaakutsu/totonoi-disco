@@ -10,7 +10,6 @@ class Record < ApplicationRecord
   validates :sauna_time, presence: true
   validates :water_time, presence: true
   validates :totonoi_time, presence: true
-  validates :sauna_type, presence: true
   validates :rouryu, presence: true
   validates :totonoi_ratio, presence: true
   validates :start_time, presence: true
