@@ -15,7 +15,7 @@ class Public::RecordsController < ApplicationController
   def create
     @record = Record.new(record_params)
     @record.user_id = current_user.id
-    if @record.save!
+    if @record.save
       redirect_to public_user_path(current_user.id)
     else
       render :new
