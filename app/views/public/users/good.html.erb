@@ -2,13 +2,13 @@
 
 <div class="container">
 
-  <h1>いいね一覧</h1>
-  
+  <h2 class="font-weight-bold d-flex align-items-center justify-content-center mb-4 mt-4"><%= @user.nickname %>さんのいいね一覧</h2>
+
   <div class="col-md-12 col-lg-7 ">
       <div class="card-list-container py-5 ml-5">
         <% @good_posts.each do |post| %>
           <div class="card mx-auto mt-1 shadow-lg">
-            
+
             <div class="card-body">
               <div class="row">
                 <div class="col-2">
@@ -26,7 +26,7 @@
                   <%= post.text %>
                 </p>
                 <div>
-                  <i class="far fa-comment"></i><%= " #{post.comments.count}" %> 
+                  <i class="far fa-comment"></i><%= " #{post.comments.count}" %>
                   <i class="far fa-heart ml-4"></i><%= " #{post.goods.count}" %>
                   <div class="text-left">
                     <%= post.created_at.strftime('%Y/%m/%d') %>
@@ -38,6 +38,6 @@
         <% end %>
       </div>
     </div>
-  
+
 
   </div>
