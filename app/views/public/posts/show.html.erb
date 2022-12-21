@@ -25,15 +25,7 @@
             </p>
             <div>
               <i class="far fa-comment"></i><%= " #{@post.comments.count}" %>
-              <% if @post.favorited_by?(current_user) %>
-                <%= link_to public_post_goods_path(@post), method: :delete do %>
-                  ♥ <%= @post.goods.count %>
-                <% end %>
-              <% else %>
-                <%= link_to public_post_goods_path(@post), method: :post do %>
-                  ♡ <%= @post.goods.count %>
-                <% end %>
-              <% end %>
+              <%= render "public/goods/good", post: @post %>
               <% if @post.user == current_user %>
                 <%= link_to "削除", public_post_path(@post), method: :delete, class: "text-dark ml-5" %>
               <% end %>

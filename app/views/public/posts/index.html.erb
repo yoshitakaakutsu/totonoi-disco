@@ -12,7 +12,7 @@
               <div class="col-lg-2">
                 <%= link_to public_user_path(post.user.id) do %><%= image_tag post.user.get_profile_image(70,70), class:"rounded-circle" %><% end %>
               </div>
-              <p class="card-title d-flex align-items-center justify-content-center ml-3">  
+              <p class="card-title d-flex align-items-center justify-content-center ml-3">
                 <strong><%= post.user.nickname %></strong>
               </p>
             </div>
@@ -24,11 +24,12 @@
                 <%= post.text %>
               </p>
               <div>
-                <i class="far fa-comment"></i><%= " #{post.comments.count}" %> 
-                <i class="far fa-heart ml-4"></i><%= " #{post.goods.count}" %>
-                  <div class="text-left">
-                    <%= post.created_at.strftime('%Y/%m/%d') %>
-                  </div>
+                <i class="far fa-comment"></i><%= " #{post.comments.count}" %>
+                <i id="good_buttons_<%= post.id %>">
+                  <%= render "public/goods/good", post: post %>
+                </i>
+                <div class="text-left">
+                  <%= post.created_at.strftime('%Y/%m/%d') %>
                 </div>
               </div>
             </div>
