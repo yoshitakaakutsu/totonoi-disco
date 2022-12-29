@@ -11,7 +11,7 @@ module Public::NotificationsHelper
       when "good" then
         "#{visitor}が#{your_post}にいいね！しました"
       when "comment" then
-        @comment=Comment.find_by(id:notification.comment_id)&.content
+        @comment=Comment.find_by(id:notification.comment_id)&.comment
         "#{visitor}が#{your_post}にコメントしました"
     end
   end
