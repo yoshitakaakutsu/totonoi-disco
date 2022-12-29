@@ -1,18 +1,18 @@
 module Public::NotificationsHelper
   def unchecked_notifications
     @notifications=current_user.passive_notifications.where(checked: false)
-  end  
-      
+  end
+
   def notification_form(notification)
     @comment=nil
-    visiter=link_to notification.visiter.nickname, notification.visiter, style:"font-weight: bold;"
-    your_post=link_to 'あなたの投稿', notification.micropost, style:"font-weight: bold;", remote: true
+    visitor=link_to notification.visitor.nickname, public_user_path(notification.visitor.id), style:"font-weight: bold;"
+    your_post=link_to 'あなたの投稿', public_post_path(notification.post.id), style:"font-weight: bold;", remote: true
     case notification.action
       when "good" then
-        "#{visiter}が#{your_post}にいいね！しました"
+        "#{visitor}が#{your_post}にいいね！しました"
       when "comment" then
         @comment=Comment.find_by(id:notification.comment_id)&.content
-        "#{visiter}が#{your_post}にコメントしました"
+        "#{visitor}が#{your_post}にコメントしました"
     end
   end
 end

@@ -4,11 +4,11 @@
       <%= link_to routes_path do %>
         <%= image_tag("logo.jpg", class:"icon") %>
       <% end %>
-      
+
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      
+
        <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav">
         <% if user_signed_in? %>
@@ -16,6 +16,12 @@
           <li class="nav-item"><%= link_to "投稿一覧", public_posts_path, class: "btn btn-info" %></li>
           <li class="nav-item"><%= link_to "投稿", new_public_post_path, class: "btn btn-info" %></li>
           <li class="nav-item"><%= link_to "ログアウト", destroy_user_session_path, method: :delete,  class: "btn btn-info" %></li>
+          <li class="nav-item">
+            <%= link_to "通知", public_user_notifications_path(current_user.id),  class: "btn btn-info" %>
+            <% if unchecked_notifications.any? %>
+              <i class="fa fa-circle notification-circle"></i>
+            <% end %>
+          </li>
         <% elsif admin_signed_in? %>
           <li class="nav-item"><%= link_to "会員一覧", admin_users_path, class: "btn btn-info" %></li>
           <li class="nav-item"><%= link_to "投稿一覧", admin_posts_path, class: "btn btn-info" %></li>
@@ -32,13 +38,13 @@
       <% if user_signed_in? %>
         <p class="offset-md-3">ようこそ<%= current_user.nickname %>さん！</p>
       <% end %>
-      
- 
-    
+
+
+
     <%= render 'public/searchs/form' %>
 
 
-     
+
     </div>
   </nav>
 </header>

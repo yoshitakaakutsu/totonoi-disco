@@ -4,7 +4,7 @@ class Public::GoodsController < ApplicationController
     post = Post.find(params[:post_id])
     good = current_user.goods.new(post_id: post.id)
     good.save
-    post.create_notification_like!(current_user)
+    post.create_notification_good!(current_user)
   end
 
   def destroy
