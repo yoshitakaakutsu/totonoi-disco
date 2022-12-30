@@ -25,15 +25,19 @@
               </p>
               <div>
                 <i class="far fa-comment"></i><%= " #{post.comments.count}" %>
+
                 <i id="good_buttons_<%= post.id %>">
                   <%= render "public/goods/good", post: post %>
                 </i>
+
+
                 <div class="text-left">
                   <%= post.created_at.strftime('%Y/%m/%d') %>
                 </div>
               </div>
             </div>
           </div>
+        </div>
       <% end %>
       <%= paginate @posts %>
       </div>

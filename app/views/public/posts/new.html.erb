@@ -3,7 +3,16 @@
 <div class="container">
 
   <h2 class="font-weight-bold d-flex align-items-center justify-content-center mt-4">投稿画面</h2>
-  
+
+  <% if @post.errors.any? %>
+    <%= @post.errors.count %>件のエラーが発生しました
+    <ul>
+      <% @post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
   <%= form_with model: @post, url: public_posts_path, method: :post do |f| %>
     <div class="field d-flex align-items-center justify-content-center">
       <%= f.label :サウナ名, class: "col-sm-6 col-lg-2 col-form-label font-weight-bold" %>
@@ -19,6 +28,6 @@
     </div>
   <% end %>
   <%= link_to "下書きへ",confirm_public_post_path(current_user), class: "d-flex align-items-center justify-content-center text-dark mt-3" %>
-  
+
 </div>
-  
+

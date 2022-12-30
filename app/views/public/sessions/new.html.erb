@@ -1,10 +1,15 @@
 <%= render '/header' %>
 
 <div class= "container">
-  
+
   <h2 class="font-weight-bold d-flex align-items-center justify-content-center mb-4">ログイン</h2>
 
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <%= render "public/shared/error_messages", resource: resource %>
+
     <div class="field d-flex align-items-center justify-content-center">
       <%= f.label :メールアドレス, class: "col-sm-6 col-lg-3 col-form-label font-weight-bold" %>
       <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "ml-5" %>
@@ -19,7 +24,7 @@
       <%= f.submit "ログイン" %>
     </div>
   <% end %>
-  
+
   <div class="d-flex align-items-center justify-content-center">
     <%= render "public/shared/links" %>
   </div>

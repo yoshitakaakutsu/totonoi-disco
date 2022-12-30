@@ -11,11 +11,17 @@ class Public::PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     if @post.status == "published"
-      @post.save
-      redirect_to public_posts_path
+      if @post.save
+        redirect_to public_posts_path
+      else
+        render :new
+      end
     elsif @post.status == "draft"
-      @post.save
-      redirect_to confirm_public_post_path(current_user.id)
+      if @post.save
+        redirect_to confirm_public_post_path(current_user.id)
+      else
+        render :new
+      end
     else
       render :new
     end

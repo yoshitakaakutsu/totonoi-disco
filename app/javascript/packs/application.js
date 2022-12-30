@@ -11,12 +11,15 @@ import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
+import "script.js"
+
 
 import Jquery from "jquery";
 import Popper from "popper.js";
 import Bootstrap from "bootstrap";
 import '@fortawesome/fontawesome-free/js/all'
 import "stylesheets/application"
+
 
 Rails.start()
 Turbolinks.start()

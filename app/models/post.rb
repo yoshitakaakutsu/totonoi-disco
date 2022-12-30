@@ -4,6 +4,10 @@ class Post < ApplicationRecord
   has_many :goods, dependent: :destroy
   has_many :notifications, dependent: :destroy
 
+  validates :sauna, presence: true
+  validates :text, presence: true
+  validates :status, presence: true
+
   def favorited_by?(user)
     goods.exists?(user_id: user.id)
   end
@@ -46,9 +50,7 @@ class Post < ApplicationRecord
     notification.save if notification.valid?
   end
 
-  validates :sauna, presence: true
-  validates :text, presence: true
-  validates :status, presence: true
+
 
   def self.search(search)
     if search != ""
@@ -61,4 +63,3 @@ class Post < ApplicationRecord
 
 
 end
-
