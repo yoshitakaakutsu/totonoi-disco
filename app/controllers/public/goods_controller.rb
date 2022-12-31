@@ -1,16 +1,24 @@
 class Public::GoodsController < ApplicationController
+  before_action :authenticate_user!, only: [:create, :destroy]
+  before_action :post_params, only: [:create, :destroy]
+
 
   def create
-    post = Post.find(params[:post_id])
-    good = current_user.goods.new(post_id: post.id)
-    good.save
-    post.create_notification_good!(current_user)
+    Good.create(user_id: current_user.id, post_id: @post.id)
+    redirect_to request.referer
+    @post.create_notification_good!(current_user)
   end
 
   def destroy
-    post = Post.find(params[:post_id])
-    good = current_user.goods.find_by(post_id: post.id)
+    good = Good.find_by(user_id: current_user.id, post_id: @post.id)
     good.destroy
+    redirect_to request.referer
+  end
+
+  private
+
+  def post_params
+    @post = Post.find(params[:post_id])
   end
 
 end

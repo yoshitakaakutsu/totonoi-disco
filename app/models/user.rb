@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :goods, dependent: :destroy
+  has_many :liked_posts, through: :goods, source: :post
   has_many :records, dependent: :destroy
 
   has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
@@ -24,6 +25,10 @@ class User < ApplicationRecord
 
   def active_for_authentication?
     super && (is_deleted == false)
+  end
+  
+  def favorited_by?(post_id)
+    goods.where(post_id: post_id).exists?
   end
 
 

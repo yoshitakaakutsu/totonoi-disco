@@ -25,7 +25,11 @@
             </p>
             <div>
               <i class="far fa-comment"></i><%= " #{@post.comments.count}" %>
-              <%= render partial: "public/goods/good", locals: {post: @post } %>
+
+              <i id="good_buttons_<%= @post.id %>">
+                <%= render "public/goods/good", post: @post %>
+              </i>
+
               <% if @post.user == current_user %>
                 <%= link_to "削除", public_post_path(@post), method: :delete, class: "text-dark ml-5" %>
               <% end %>

@@ -1,9 +1,16 @@
-<% if post.favorited_by?(current_user) %>
-  <%= link_to public_post_goods_path(post), method: :delete, remote: true do %>
-    ♥ <%= post.goods.count %>
+
+
+<% if !user_signed_in? %>
+  <i class="fa fa-heart like-btn"></i>
+  <%= post.goods.length %>
+<% elsif current_user.favorited_by?(post.id) %>
+  <%= link_to public_post_goods_path(post), method: :delete do %>
+    <i class="fa fa-heart text-danger"></i>
   <% end %>
+  <%= post.goods.length %>
 <% else %>
-  <%= link_to public_post_goods_path(post), method: :post, remote: true do %>
-    ♡ <%= post.goods.count %>
+  <%= link_to public_post_goods_path(post), method: :post do %>
+    <i class="fa fa-heart text-secondary"></i>
   <% end %>
+  <%= post.goods.length %>
 <% end %>
