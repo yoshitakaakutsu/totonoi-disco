@@ -178,3 +178,28 @@ ja:
       long: "%Y/%m/%d %H:%M"
       short: "%m/%d %H:%M"
     pm: 午後
+
+ja:
+ activerecord:
+  attributes:
+   post:
+    sauna: "サウナ名"
+    text: "本文"
+    adress: "住所もしくは施設名"
+
+ja:
+ activerecord:
+  attributes:
+   record:
+      sauna_name: "サウナ名"
+      sauna_tempureture: "サウナ温度"
+      water_tempurature: "水風呂温度"
+      tempreture: "外気（内気）温度"
+      wether: "天気"
+      sets: "セット数"
+      sauna_time: "サウナ時間"
+      water_time: "水風呂時間"
+      totonoi_time: "休憩時間"
+      rouryu: "ロウリュ"
+      totonoi_ratio: "ととのい度"
+      start_time: "日時"

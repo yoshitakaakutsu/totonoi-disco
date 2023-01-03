@@ -6,7 +6,7 @@ module Public::NotificationsHelper
   def notification_form(notification)
     @comment=nil
     visitor=link_to notification.visitor.nickname, public_user_path(notification.visitor.id), style:"font-weight: bold;"
-    your_post=link_to 'あなたの投稿', public_post_path(notification.post.id), style:"font-weight: bold;", remote: true
+    your_post=link_to 'あなたの投稿', public_post_path(notification.post.id), style:"font-weight: bold;"
     case notification.action
       when "good" then
         "#{visitor}が#{your_post}にいいね！しました"

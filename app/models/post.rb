@@ -8,13 +8,14 @@ class Post < ApplicationRecord
   validates :sauna, presence: true
   validates :text, presence: true
   validates :status, presence: true
+  validates :adress, presence: true
 
 
 
   enum status: {published: 0, draft: 1}
 
   geocoded_by :adress
-  after_validation :geocode
+  after_validation :geocode, if: :adress_changed?
 
   def create_notification_good!(current_user)
     temp = Notification.where(["visitor_id = ? and visited_id = ? and post_id = ? and action = ? ", current_user.id, user_id, id, 'good'])
