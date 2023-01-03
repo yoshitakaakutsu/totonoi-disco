@@ -180,12 +180,14 @@ ja:
     pm: 午後
 
 ja:
- activerecord:
-  attributes:
-   post:
-    sauna: "サウナ名"
-    text: "本文"
-    adress: "住所もしくは施設名"
+  activerecord:
+    models:
+      post: 投稿
+    attributes:
+      post:
+        sauna: "サウナ名"
+        text: "本文"
+        adress: "住所もしくは施設名"
 
 ja:
  activerecord:
