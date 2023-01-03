@@ -72,6 +72,6 @@ class Public::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:sauna,:text, :status)
+    params.require(:post).permit(:sauna,:text, :status, :adress, :latitude, :longitude)
   end
 end

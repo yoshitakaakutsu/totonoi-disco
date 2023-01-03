@@ -2,7 +2,7 @@ class Post < ApplicationRecord
   belongs_to :user
   has_many :comments, dependent: :destroy
   has_many :goods, dependent: :destroy
-has_many :liked_users, through: :goods, source: :user
+  has_many :liked_users, through: :goods, source: :user
   has_many :notifications, dependent: :destroy
 
   validates :sauna, presence: true
@@ -12,6 +12,9 @@ has_many :liked_users, through: :goods, source: :user
 
 
   enum status: {published: 0, draft: 1}
+
+  geocoded_by :adress
+  after_validation :geocode
 
   def create_notification_good!(current_user)
     temp = Notification.where(["visitor_id = ? and visited_id = ? and post_id = ? and action = ? ", current_user.id, user_id, id, 'good'])

@@ -22,12 +22,16 @@
       <%= f.label :投稿, class: "col-sm-6 col-lg-2 col-form-label font-weight-bold" %>
       <%= f.text_area :text, size: "60x8" %>
     </div>
+    <div class="field d-flex align-items-center justify-content-center">
+      <%= f.label :住所or施設名, class: "col-sm-6 col-lg-2 col-form-label font-weight-bold" %>
+      <%= f.text_area :adress, size: "60x1" %>
+    </div>
     <div class="actions ml-4 mt-3 d-flex align-items-center justify-content-center mt-4">
-      <%= f.select :status, [["公開", "published"], ["下書き", "draft"]],required: true,class:"form-control" %>
+      <%= f.select :status,[["公開", "published"], ["下書き", "draft"]],required: true,class:"form-control" %>
       <%= f.submit '投稿' %>
     </div>
   <% end %>
-  <%= link_to "下書きへ",confirm_public_post_path(current_user), class: "d-flex align-items-center justify-content-center text-dark mt-3" %>
+  <%= link_to "下書きへ", confirm_public_post_path(current_user), class: "d-flex align-items-center justify-content-center text-dark mt-3" %>
 
 </div>
 

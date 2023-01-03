@@ -68,6 +68,10 @@ gem 'groupdate'
 
 gem 'jquery-rails'
 
+
+gem 'geocoder'
+
+
 gem 'dotenv-rails'
 group :production do
   gem 'mysql2'
