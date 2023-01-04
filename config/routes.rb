@@ -34,7 +34,7 @@ Rails.application.routes.draw do
       get "/search" => "searchs#search", as: "search"
 
     resources :users, only: [:show, :edit, :update, :destroy] do
-      resources :notifications, only: :index
+      resources :notifications, only: [:index, :destroy]
 
 
       member do
